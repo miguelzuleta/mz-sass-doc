@@ -1,0 +1,28 @@
+// ----------------------------------------------------------------------
+
+  // Test
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Miguel Zuleta
+/// @group this is a group
+////
+
+/// Horizontally center a block element
+///
+/// @example scss - Basic Usage Sass
+///    .center-my-block-thingie {
+///        @include testMix();
+///    }
+///
+/// @example scss - Basic Usage CSS Output
+///    .center-my-block-thingie {
+///        margin-left: auto;
+///        margin-right: auto;
+///    }
+
+@mixin testMix {
+    margin-left: auto;
+    margin-right: auto;
+}

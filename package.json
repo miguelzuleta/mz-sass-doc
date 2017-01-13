@@ -1,0 +1,23 @@
+{
+  "name": "mz-sass-doc",
+  "version": "1.0.0",
+  "description": "Random Sass Docs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelzuleta/mz-sass-doc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguelzuleta/mz-sass-doc/issues"
+  },
+  "homepage": "https://github.com/miguelzuleta/mz-sass-doc#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "sassdoc": "^2.1.20"
+  }
+}
