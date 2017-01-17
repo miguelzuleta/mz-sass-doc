@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var sassdoc = require('sassdoc');
+var gulp = require('gulp'),
+	sassdoc = require('sassdoc');
 
 gulp.task('docs:sassdoc', function(){
 	return gulp.src('sass/*.scss')
@@ -10,4 +10,4 @@ gulp.task('watch', function(){
 	gulp.watch('sass/*.scss', ['docs:sassdoc']);
 })
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['docs:sassdoc', 'watch']);

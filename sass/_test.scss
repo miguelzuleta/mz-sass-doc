@@ -1,28 +1,65 @@
-// ----------------------------------------------------------------------
-
-  // Test
-
-// ----------------------------------------------------------------------
-
 ////
-/// @author Miguel Zuleta
-/// @group this is a group
+/// @group random
 ////
 
-/// Horizontally center a block element
+/// Nudge elements in any direction on all viewports
 ///
-/// @example scss - Basic Usage Sass
-///    .center-my-block-thingie {
-///        @include testMix();
-///    }
+/// @param {String} $large [0] - Value of margin
+/// @param {String} $medium [$large]
+/// @param {String} $small [$medium]
+/// @param {String} $marginDir [top] - Margin side
 ///
-/// @example scss - Basic Usage CSS Output
-///    .center-my-block-thingie {
-///        margin-left: auto;
-///        margin-right: auto;
-///    }
+/// @example scss - Single Margin
+/// .example {
+///   @include margin-nudge(20px, 30px, 40px, left);
+/// }
+///
+/// @example scss - Multiple Margins
+/// .example {
+///   @include margin-nudge(
+///     20px auto,
+///		30px auto,
+///		40px auto
+///   );
+/// }
 
-@mixin testMix {
-    margin-left: auto;
-    margin-right: auto;
+@mixin margin-nudge($large:0, $medium:$large, $small:$medium, $marginDir: top) {
+
+  $margin: 'margin-';
+
+  @if (length($large) > 1) {
+    $margin: 'margin';
+    $marginDir: '';
+  }
+
+  @include css((
+    #{$margin}#{$marginDir}: (
+      large: #{$large},
+      medium: #{$medium},
+      small: #{$small}
+    )
+  ));
+}
+
+/// Reset margin or padding values on specific viewport
+///
+/// @param {String} $propName - Generates HTML classes that reset the values of those properties.
+/// @param {String} $propVal [0]
+///
+/// @example scss - Single Margin
+/// .example {
+///   @include resetProp('margin');
+/// }
+///
+
+@mixin resetProp($propName, $propVal: 0) {
+  @each $viewport in viewport-list() {
+    @include viewport($viewport) {
+      @each $propDirection in ('', '-left', '-right', '-top', '-bottom') {
+        .reset-#{$propName}#{$propDirection}-#{$viewport} {
+          #{$propName}#{$propDirection}: $propVal !important;
+        }
+      }
+    }
+  }
 }
